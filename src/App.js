@@ -29,8 +29,8 @@ class App extends Component {
   }
 
   deletePersonsHandler = (personsIndex) => {
-    const oldPersons = this.state.persons;
-    oldPersons.splice(personsIndex, 1);
+    const oldPersons = this.state.persons;  
+    oldPersons.splice(personsIndex, 1);  // Bad. because all array in JS is reference. it also mutate original array
     this.setState({ persons: oldPersons });
   }
 
