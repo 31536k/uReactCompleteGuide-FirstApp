@@ -1,11 +1,11 @@
-.Person {
+/* .Person {
     width: 60%;
     margin: 16px auto;
     border: 1px solid #eeeeee;
     box-shadow: 0 2px 3px #cccccc;
     padding: 16px;
     text-align: center;
-}
+} */
 
 /* 아래 역할을 Person.js 에서 Radium 을 이용해서 한다.
 @media (min-width: 500px) {
