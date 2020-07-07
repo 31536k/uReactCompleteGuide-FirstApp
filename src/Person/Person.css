@@ -6,3 +6,11 @@
     padding: 16px;
     text-align: center;
 }
+
+/* 아래 역할을 Person.js 에서 Radium 을 이용해서 한다.
+@media (min-width: 500px) {
+    .Person {
+        width: 450px;
+    }
+}
+*/
