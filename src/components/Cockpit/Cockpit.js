@@ -5,7 +5,10 @@ const cockpit = (props) => {
   useEffect(() => {
     console.log('[Cockpit.js] useEffect')
     // can fire Http request
-  });
+    setTimeout(() => {
+      console.log('Fake Http rquest')
+    })
+  }, [props.persons]); // props.persons 에 변화가 있을 때만 첫번째 매개변수로 전달한 함수가 실행된다. 빈 array 로 [] 를 주면 최초에 한 번만 실행된다.
 
   const assignedClasses = [];
   let buttonClass = '';
