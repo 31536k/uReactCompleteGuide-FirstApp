@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
-import WithClass from '../hoc/WithClass'
+import withClass from '../hoc/withClass'
+import Aux from '../hoc/Aux'
 
 class App extends Component {
   constructor(props) {
@@ -75,7 +76,7 @@ class App extends Component {
 
     // <StyleRoot> Person.js 에서 '@media (min-width: 500px)'을 적용하려면 StyleRoot 로 감싸야 한다. 
     return (
-      <WithClass classes={classes.App}>
+      <Aux>
         <button onClick={() => {
           this.setState({ showCockpit: false }) // cockpit 이 사라지면 Cockpit 의 'cleanup work in useEffect' 부분이 호출된다.
         }}>Remove cockpit</button>
@@ -86,9 +87,9 @@ class App extends Component {
           personsLength={this.state.persons.length}
           clicked={this.togglePersonsHandler} /> : null}
         {persons}
-      </WithClass>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
