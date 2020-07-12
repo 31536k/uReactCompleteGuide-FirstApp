@@ -22,7 +22,8 @@ class App extends Component {
     otherState: "Some other value",
     showPersons: false,
     showCockpit: true,
-    changedCounter: 0
+    changedCounter: 0,
+    authenticated: false
   }
 
   static getDrivedStateFromProps(props, state) {
@@ -68,16 +69,23 @@ class App extends Component {
     this.setState({ showPersons: !this.state.showPersons });
   }
 
+  loginHandler = () => {
+    this.setState({authenticated: true})
+  }
+
   render() {
     console.log('[App.js] render');
 
     let persons = null
 
     if (this.state.showPersons) {
-      persons = <Persons
+      persons = 
+      <Persons
         persons={this.state.persons}
         clicked={this.deletePersonsHandler}
-        changed={this.nameChangedHandler} />;
+        changed={this.nameChangedHandler} 
+        isAuthenticated={this.state.authenticated}
+      />
     }
 
     // <StyleRoot> Person.js 에서 '@media (min-width: 500px)'을 적용하려면 StyleRoot 로 감싸야 한다. 
@@ -91,7 +99,9 @@ class App extends Component {
           title={this.props.title}
           showPersons={this.state.showPersons}
           personsLength={this.state.persons.length}
-          clicked={this.togglePersonsHandler} /> : null}
+          clicked={this.togglePersonsHandler}
+          login={this.loginHandler}
+        /> : null}
         {persons}
       </Aux>
     );
