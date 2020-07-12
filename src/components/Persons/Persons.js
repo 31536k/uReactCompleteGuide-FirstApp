@@ -18,7 +18,7 @@ class Persons extends PureComponent {
 
     getSnapshotBeforeUpdate(preProps, prevState) {
         console.log('[Persons.js] getSnapshotBeforeUpdate');
-        return { message: 'Snapshot'}
+        return { message: 'Snapshot' }
     }
 
     componentDidUpdate(prevPrips, prevState, snapshot) {
@@ -32,21 +32,21 @@ class Persons extends PureComponent {
 
     render() {
         console.log('[Persons.js] rendering...');
-        return this.props.persons.map((person, index) => {
+        return (this.props.persons.map((person, index) => {
             return (
-            <Person
-                click={() => this.props.clicked(index)}
-                name={person.name}
-                age={person.age}
-                key={person.id}
-                changed={(event) => this.props.changed(event, person.id)} 
-                isAuth={this.props.isAuthenticated}
-            />
-            )
+                <Person
+                    click={() => this.props.clicked(index)}
+                    name={person.name}
+                    age={person.age}
+                    key={person.id}
+                    changed={(event) => this.props.changed(event, person.id)}
+                />
+            );
         })
+        );
     }
-    
-    
+
+
 }
 
 export default Persons;
