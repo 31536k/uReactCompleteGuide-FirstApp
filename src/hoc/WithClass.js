@@ -3,7 +3,7 @@ import React from 'react'
 const withClass = (WrappedComponet, className) => {
     return (props) => (
         <div className={props.classes}>
-            <WrappedComponet/>
+            <WrappedComponet {...props}/>
         </div>
     );
 };
