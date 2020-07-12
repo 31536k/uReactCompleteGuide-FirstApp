@@ -5,13 +5,23 @@ import Aux from '../../../hoc/Aux'
 import PropTypes from 'prop-types'
 
 class Person extends Component {
+    componentDidMount() {
+        this.inputElement.focus();
+    }
+
     render() {
         console.log('[Person.js] rendering...');
         return (
             <Aux>
                 <p key="e1" onClick={this.props.click} > I'm {this.props.name}! I'm {this.props.age} years old</p >
                 <p key="e2">{this.props.children}</p>
-                <input key="e3" type="text" onChange={this.props.changed} value={this.props.name} />
+                <input 
+                    key="e3" 
+                    ref={(inputEl) => {this.inputElement = inputEl}}
+                    type="text" 
+                    onChange={this.props.changed} 
+                    value={this.props.name} 
+                />
             </Aux>
         );
     }
