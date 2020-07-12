@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import classes from './Cockpit.css'
 
 const cockpit = (props) => {
+  const toggleBtnRef = useRef(null);
+
   useEffect(() => {
     console.log('[Cockpit.js] useEffect')
     // can fire Http request
-    setTimeout(() => {
-      console.log('Fake Http rquest')
-    }, 1000);
+    // setTimeout(() => {
+    //   console.log('Fake Http rquest')
+    // }, 1000);
+    toggleBtnRef.current.click();
     return () => {
       console.log('[Cockpit.js] cleanup work in useEffect') // Cockpit component 가 parent 에서 unmount 될 때 호출된다.
     };
@@ -38,7 +41,7 @@ const cockpit = (props) => {
     <div className={classes.Cockpit}>
       <h1>{props.title}</h1>
       <p className={assignedClasses.join(' ')}>This is really working</p>
-      <button className={buttonClass} onClick={props.clicked}>Toggle Persons</button>
+      <button ref={toggleBtnRef} className={buttonClass} onClick={props.clicked}>Toggle Persons</button>
     </div>
   )
 }
